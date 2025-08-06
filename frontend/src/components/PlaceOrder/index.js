@@ -9,9 +9,9 @@ const PlaceOrder = () => {
 
   let deliveryFee = 0;
   if (getSubTotalAmount() < 30) {
-    deliveryFee = 0.15 * getSubTotalAmount();
+    deliveryFee = Math.round(0.15 * getSubTotalAmount());
   } else if (getSubTotalAmount() >= 30 && getSubTotalAmount() < 100) {
-    deliveryFee = 0.07 * getSubTotalAmount();
+    deliveryFee = Math.round(0.07 * getSubTotalAmount());
   } else {
     deliveryFee = 0;
   }

@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-
-import "./App.css";
+import { ToastContainer } from "react-toastify";
 
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -10,12 +9,15 @@ import Footer from "./components/Footer";
 import { useState } from "react";
 import Login from "./components/Login";
 
+import "./App.css";
+
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
     <>
       <div className="app">
+        <ToastContainer />
         {showLogin ? <Login setShowLogin={setShowLogin} /> : <></>}
         <Navbar setShowLogin={setShowLogin} />
         <Routes>

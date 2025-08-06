@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Cookies from "js-cookies";
+import { toast } from "react-toastify";
+
+import { assets } from "../../assets/frontend_assets/assets";
 
 import "./index.css";
-import { assets } from "../../assets/frontend_assets/assets";
 
 const Login = (props) => {
   const [formCurrentState, setFormCurrentState] = useState("Sign Up");
   const [data, setData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -28,20 +30,6 @@ const Login = (props) => {
       url += "/register";
     }
 
-    // const loginUserData = {
-    //   email: data.email,
-    //   password: data.password,
-    // };
-
-    // const registerUserData = {
-    //   username: data.name,
-    //   email: data.email,
-    //   password: data.password,
-    // };
-
-    // const bodyData =
-    //   formCurrentState === "Login" ? loginUserData : registerUserData;
-
     const options = {
       method: "POST",
       body: JSON.stringify(data),
@@ -49,11 +37,20 @@ const Login = (props) => {
     };
 
     const response = await fetch(url, options);
-    const responseData = await response.json();
 
     if (response.ok) {
-      console.log(responseData)
+      const responseData = await response.json();
+      console.log(responseData);
+      setData({
+        username: "",
+        email: "",
+        password: "",
+      });
+      toast.success(`${responseData.message}`);
+      Cookies.setItem("jwt_token", responseData.jwtToken, { expires: 7 });
     } else {
+      const responseData = await response.json();
+      toast.error(`${responseData.message}`);
     }
   };
 
@@ -78,9 +75,9 @@ const Login = (props) => {
               type="text"
               required
               placeholder="John"
-              name="name"
+              name="username"
               onChange={onChangeHandler}
-              value={data.name}
+              value={data.username}
             />
           )}
           <input
@@ -109,14 +106,14 @@ const Login = (props) => {
         </div>
         {formCurrentState === "Login" ? (
           <p>
-            Create a new account?
+            Create a new account?{" "}
             <span onClick={() => setFormCurrentState("Sign Up")}>
               Click here
             </span>
           </p>
         ) : (
           <p>
-            Already have an account?
+            Already have an account?{" "}
             <span onClick={() => setFormCurrentState("Login")}>Login here</span>
           </p>
         )}

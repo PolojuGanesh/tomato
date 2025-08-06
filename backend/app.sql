@@ -8,7 +8,7 @@
 -- );
 
 delete from users
-where id = 4;
+where id = 9;
 
 -- ALTER TABLE products
 -- RENAME COLUMN id to _id;

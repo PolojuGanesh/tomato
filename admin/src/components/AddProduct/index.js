@@ -103,7 +103,11 @@ const AddProduct = () => {
         <div className="admin-add-category-price-container">
           <div className="add-category-container admin-add-product-form-container">
             <p>Product category</p>
-            <select onChange={onChangeHandler} name="category">
+            <select
+              onChange={onChangeHandler}
+              name="category"
+              value={productData.category}
+            >
               <option value="Salad">Salad</option>
               <option value="Rolls">Rolls</option>
               <option value="Deserts">Deserts</option>

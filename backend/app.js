@@ -110,6 +110,7 @@ app.post("/register", async (request, response) => {
     await db.run(userCreateQuery);
     response.send({ message: "Registered successfully!" });
   } else {
+    response.status(400)
     response.send({ message: "User already exists!" });
   }
 });
@@ -129,6 +130,7 @@ app.post("/login", async (request, response) => {
       const jwtToken = jwt.sign(payload, "my_token");
       response.send({ jwtToken: jwtToken, message: "Login successfull!" });
     } else {
+      response.status(400)
       response.send({ message: "Invalid password!" });
     }
   }
