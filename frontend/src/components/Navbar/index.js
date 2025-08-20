@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookies";
 
 import { assets } from "../../assets/frontend_assets/assets";
 import { StoreContext } from "../context/StoreContext";
@@ -11,6 +12,15 @@ const Navbar = (props) => {
   const { getSubTotalAmount } = useContext(StoreContext);
 
   const { setShowLogin } = props;
+
+  const jwtToken = Cookies.getItem("jwt_token");
+
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    Cookies.removeItem("jwt_token");
+    navigate("/");
+  };
 
   return (
     <div className="navbar-main-container">
@@ -61,13 +71,34 @@ const Navbar = (props) => {
             className={getSubTotalAmount() === 0 ? "" : "dot-container"}
           ></div>
         </div>
-        <button
-          onClick={() => setShowLogin(true)}
-          type="button"
-          className="sign-in-button"
-        >
-          Sign in
-        </button>
+        {jwtToken === null ? (
+          <button
+            onClick={() => setShowLogin(true)}
+            type="button"
+            className="sign-in-button"
+          >
+            Sign in
+          </button>
+        ) : (
+          <div className="navbar-profile-container">
+            <img
+              className="navbar-cart-icon"
+              src={assets.profile_icon}
+              alt=""
+            />
+            <ul className="navbar-user-profile-dorpdown">
+              <li>
+                <img src={assets.bag_icon} alt="" />
+                <p>Orders</p>
+              </li>
+              <hr />
+              <li onClick={logoutHandler}>
+                <img src={assets.logout_icon} alt="" />
+                <p>Logout</p>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -13,7 +13,11 @@ const FoodItems = (props) => {
   return (
     <div className="each-food-item-container">
       <div className="food-item-image-container">
-        <img className="food-item-image" src={image} alt={name} />
+        <img
+          className="food-item-image"
+          src={"http://localhost:4000/images/" + image}
+          alt={name}
+        />
         {!cartItems[_id] ? (
           <img
             onClick={() => addToCart(_id)}

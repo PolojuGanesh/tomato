@@ -14,6 +14,8 @@ const Login = (props) => {
     password: "",
   });
 
+  const { setShowLogin } = props;
+
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -46,6 +48,7 @@ const Login = (props) => {
         email: "",
         password: "",
       });
+      setShowLogin(false);
       toast.success(`${responseData.message}`);
       Cookies.setItem("jwt_token", responseData.jwtToken, { expires: 7 });
     } else {
@@ -53,8 +56,6 @@ const Login = (props) => {
       toast.error(`${responseData.message}`);
     }
   };
-
-  const { setShowLogin } = props;
 
   return (
     <div className="login-main-container">

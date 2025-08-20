@@ -7,8 +7,8 @@
 --   price INTEGER NOT NULL
 -- );
 
-delete from users
-where id = 9;
+-- delete from users
+-- where id = 9;
 
 -- ALTER TABLE products
 -- RENAME COLUMN id to _id;

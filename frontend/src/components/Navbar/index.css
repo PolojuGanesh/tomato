@@ -76,6 +76,44 @@
   cursor: pointer;
 }
 
+.navbar-profile-container {
+  position: relative;
+}
+
+.navbar-user-profile-dorpdown {
+  position: absolute;
+  display: none;
+  right: 0;
+  z-index: 1;
+}
+
+.navbar-profile-container:hover .navbar-user-profile-dorpdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff2ef;
+  padding: 12px 25px;
+  border-radius: 4px;
+  border: 1px solid tomato;
+  outline: 2px solid white;
+  list-style-type: none;
+}
+
+.navbar-user-profile-dorpdown li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.navbar-user-profile-dorpdown img {
+  width: 20px;
+}
+
+.navbar-user-profile-dorpdown li:hover {
+  color: tomato;
+}
+
 @media (max-width: 1050px) {
   .navbar-logo {
     width: 140px;
