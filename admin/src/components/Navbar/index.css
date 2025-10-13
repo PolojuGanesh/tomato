@@ -1,0 +1,17 @@
+.admin-navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 4%;
+  position: sticky;
+  top: 0px;
+  background-color: #ffffff;
+}
+
+.admin-logo {
+  width: max(10%, 80px);
+}
+
+.admin-profile {
+  width: 40px;
+}

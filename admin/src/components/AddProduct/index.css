@@ -1,0 +1,41 @@
+.admin-add-product-main-container {
+  width: 70%;
+  margin-left: max(5vw, 25px);
+  margin-top: 50px;
+  color: #6d6d6d;
+  font-size: 16px;
+}
+
+.add-img-upload-container img {
+  width: 120px;
+}
+
+.admin-add-product-name-container,
+.admin-add-product-description-container {
+  width: max(40%, 280px);
+}
+
+.admin-add-product-name-container input,
+.admin-add-product-description-container textarea {
+  padding: 10px;
+}
+
+.admin-add-category-price-container {
+  display: flex;
+  gap: 30px;
+}
+
+.admin-add-category-price-container select,
+.admin-add-category-price-container input {
+  max-width: 120px;
+  padding: 10px;
+}
+
+.add-product-button {
+  max-width: 120px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+}

@@ -1,0 +1,13 @@
+.app-content {
+  display: flex;
+}
+
+.admin-add-product-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cursor {
+  cursor: pointer;
+}

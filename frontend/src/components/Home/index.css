@@ -1,0 +1,102 @@
+.home-horizontal-line {
+  height: 2px;
+  margin: 10px 0px;
+  border: none;
+  background-color: #e2e2e2;
+}
+
+.app-download-container {
+  margin: auto auto;
+  margin-top: 100px;
+  text-align: center;
+  font-size: max(3vw, 20px);
+  font-weight: 500;
+}
+
+.app-download-platforms-container {
+  display: flex;
+  justify-content: center;
+  gap: max(2vw, 10px);
+  margin-top: 40px;
+}
+
+.app-download-img {
+  width: max(30vw, 120px);
+  max-width: 180px;
+  cursor: pointer;
+}
+
+.home-main-container {
+  height: 34vw;
+  margin: 30px auto;
+  background: url("../../assets/frontend_assets/header_img.png") no-repeat
+    center center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.home-banner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 50%;
+  color: #ffffff;
+}
+
+.home-banner-main-heading {
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+.home-banner-para {
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.home-view-menu-button {
+  background-color: #ffffff;
+  border: none;
+  color: #747474;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.8rem 2rem;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  cursor: pointer;
+}
+
+.home-view-menu-button:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .home-main-container {
+    height: auto;
+    background-size: cover;
+    padding: 1.5rem;
+  }
+
+  .home-banner-container {
+    max-width: 100%;
+    gap: 1rem;
+  }
+
+  .home-banner-main-heading {
+    font-size: 1.8rem;
+  }
+
+  .home-banner-para {
+    display: none;
+  }
+
+  .home-view-menu-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,104 @@
+.order-item {
+  display: grid;
+  grid-template-columns: 0.4fr 2fr 0.7fr 0.6fr 0.8fr;
+  align-items: start;
+  gap: 20px;
+  border: 1px solid tomato;
+  padding: 20px;
+  margin: 30px 0;
+  font-size: 14px;
+  color: #505050;
+  background-color: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.orders-heading-and-refresh-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orders-heading-and-refresh-container button {
+  background-color: #ffe8e4;
+  border: 1px solid tomato;
+  width: max(10vw, 120px);
+  padding: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.order-item-food,
+.order-item-name {
+  font-weight: 600;
+}
+
+.order-item-name {
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+.order-item img {
+  width: 50px;
+  height: auto;
+}
+
+.order-item-address {
+  margin-bottom: 10px;
+}
+
+.order-item > * {
+  min-width: 0;
+}
+
+.order-item select {
+  background-color: #ffe8e4;
+  border: 1px solid tomato;
+  width: max(10vw, 120px);
+  padding: 10px;
+  outline: none;
+}
+
+@media (max-width: 1100px) {
+  .order-item {
+    grid-template-columns: 0.5fr 2fr 0.8fr 0.8fr;
+    font-size: 13px;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .order-item {
+    grid-template-columns: 0.6fr 2fr 0.8fr;
+    font-size: 12.5px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 700px) {
+  .order-item {
+    grid-template-columns: 0.8fr 2fr;
+    gap: 12px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .order-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 8px;
+  }
+
+  .order-item select {
+    width: 100%;
+  }
+
+  .orders-heading-and-refresh-container button {
+    width: max(8vw, 110px);
+    padding: 6px;
+  }
+}

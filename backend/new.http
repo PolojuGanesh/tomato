@@ -1,0 +1,143 @@
+POST http://localhost:4000/register
+Content-Type: application/json
+
+{
+    "username": "Sai",
+    "email": "sai@gmail.com",
+    "password": "Sai@2025"
+}
+###
+
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "email": "roman@gmail.com",
+    "password": "Roman@2025"
+}
+###
+
+GET http://localhost:4000/added-products-list
+###
+
+POST http://localhost:4000/addtocart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvbWFuQGdtYWlsLmNvbSIsImlhdCI6MTc1ODYyNTU5NH0.uHPlrosNT42CfsslOz58flUCvDE3rActoTL5vVbh48M
+
+{
+    "user_id": 1, 
+    "product_id": 14, 
+    "quantity": 1, 
+    "price": 12
+}
+###
+
+PUT http://localhost:4000/removecartitem
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvbWFuQGdtYWlsLmNvbSIsImlhdCI6MTc1ODYyNTU5NH0.uHPlrosNT42CfsslOz58flUCvDE3rActoTL5vVbh48M
+
+{
+    "user_id": 1,
+    "product_id": 14
+}
+###
+
+GET http://localhost:4000/userCartItems/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvbWFuQGdtYWlsLmNvbSIsImlhdCI6MTc1ODYyNTU5NH0.uHPlrosNT42CfsslOz58flUCvDE3rActoTL5vVbh48M
+###
+
+GET http://localhost:4000/items?search=Veg
+###
+
+POST http://localhost:4000/payment
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvbWFuQGdtYWlsLmNvbSIsImlhdCI6MTc1ODYyNTU5NH0.uHPlrosNT42CfsslOz58flUCvDE3rActoTL5vVbh48M
+
+{
+    "address": {
+        "firstname": "Roman",
+        "lastname": "Reings",
+        "email": "romanreings@gmail.com",
+        "street": "Hyderabad",
+        "city": "Hyderabad",
+        "state": "Telangana",
+        "zipcode": "500035",
+        "country": "India",
+        "phone": "1234567890"
+    }, 
+    "items": [
+        {   
+            "_id": 14,
+            "name": "Greek salad",
+            "quantity": 2,
+            "price": 12
+        },
+        {   
+            "_id": 15,
+            "name": "Veg salad",
+            "quantity": 1,
+            "price": 18
+        }
+    ],
+    "amount": 45,
+    "user_id": 1,
+    "status": "Food Processing"
+}
+###
+
+POST http://localhost:4000/orders/verify-payment
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvbWFuQGdtYWlsLmNvbSIsImlhdCI6MTc1ODYyNTU5NH0.uHPlrosNT42CfsslOz58flUCvDE3rActoTL5vVbh48M
+
+{
+    "address": {
+        "firstname": "Roman",
+        "lastname": "Reings",
+        "email": "romanreings@gmail.com",
+        "street": "Hyderabad",
+        "city": "Hyderabad",
+        "state": "Telangana",
+        "zipcode": "500035",
+        "country": "India",
+        "phone": "1234567890"
+    }, 
+    "items": [
+        {   
+            "_id": 14,
+            "name": "Greek salad",
+            "quantity": 2,
+            "price": 12
+        },
+        {   
+            "_id": 15,
+            "name": "Veg salad",
+            "quantity": 1,
+            "price": 18
+        }
+    ],
+    "amount": 45,
+    "user_id": 1,
+    "status": "Food Processing",
+    "order_id": "order_1080479233gzxUMdblbbS4TWeVjCvMzm2MP"
+}
+### 
+
+POST http://localhost:4000/myorders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvbWFuQGdtYWlsLmNvbSIsImlhdCI6MTc1ODYyNTU5NH0.uHPlrosNT42CfsslOz58flUCvDE3rActoTL5vVbh48M
+
+{
+    "user_id": 27
+}
+### 
+
+GET http://localhost:4000/orderslist
+###   
+
+PUT http://localhost:4000/update-status
+Content-Type: application/json
+
+{
+    "order_id": "order_1080479233mBFVE4lIxkCDAZzbVreriqdKj",
+    "status": "Out for delivery"
+}
