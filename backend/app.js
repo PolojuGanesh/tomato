@@ -347,7 +347,7 @@ app.post("/payment", authMiddleware, async (request, response) => {
         customer_name: `${firstname} ${lastname}`,
       },
       order_meta: {
-        return_url: process.env.RETURN_URL || "http://localhost:3000/myorders",
+        return_url: "https://tomato-frontend-xwir.onrender.com/myorders",
       },
     };
 
