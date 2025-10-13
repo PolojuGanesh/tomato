@@ -12,7 +12,7 @@ import Orders from "./components/Orders";
 import "./App.css";
 
 const App = () => {
-  const apiUrl = "http://localhost:4000";
+  const apiUrl = "https://tomato-backend-foew.onrender.com";
 
   return (
     <div>
