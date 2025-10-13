@@ -13,7 +13,7 @@ const StoreContextProvider = (props) => {
   const userData = Cookies.getItem("user_details");
   const parsedUserData = JSON.parse(userData);
 
-  const apiUrl = "http://localhost:4000";
+  const apiUrl = "https://tomato-backend-foew.onrender.com";
 
   const getFoodListHandler = async () => {
     let url;
