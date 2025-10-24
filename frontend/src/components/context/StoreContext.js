@@ -9,6 +9,7 @@ const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState([]);
   const [jwtToken, setJwtToken] = useState(Cookies.getItem("jwt_token"));
   const [userSearch, setUserSearch] = useState("");
+  const [showSpinner, setShowSpinner] = useState(true);
 
   const userData = Cookies.getItem("user_details");
   const parsedUserData = JSON.parse(userData);
@@ -30,6 +31,7 @@ const StoreContextProvider = (props) => {
     const responseData = await response.json();
 
     if (response.ok) {
+      setShowSpinner(false);
       setFoodList(responseData);
     } else {
     }
@@ -164,6 +166,7 @@ const StoreContextProvider = (props) => {
     userSearch,
     setUserSearch,
     apiUrl,
+    showSpinner,
   };
 
   return (

@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
 import FoodItems from "../FoodItems";
 import { assets } from "../../assets/frontend_assets/assets";
+import { TailSpin } from "react-loader-spinner";
 
 import "./index.css";
 
 const FoodDisplay = ({ menuCategory }) => {
-  const { food_list, userSearch, setUserSearch } = useContext(StoreContext);
+  const { food_list, userSearch, setUserSearch, showSpinner } =
+    useContext(StoreContext);
 
   return (
     <div className="food-display-container">
@@ -23,16 +25,31 @@ const FoodDisplay = ({ menuCategory }) => {
         </div>
       </div>
       <div className="food-items-list-container">
-        {food_list.map((eachFoodItem) => {
-          if (
-            menuCategory === "allCategories" ||
-            menuCategory === eachFoodItem.category
-          ) {
-            return (
-              <FoodItems key={eachFoodItem._id} eachFoodItem={eachFoodItem} />
-            );
-          }
-        })}
+        {showSpinner ? (
+          <div className="spinner-container">
+            <TailSpin
+              visible={true}
+              height="50"
+              width="50"
+              color="tomato"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass=""
+            />
+          </div>
+        ) : (
+          food_list.map((eachFoodItem) => {
+            if (
+              menuCategory === "allCategories" ||
+              menuCategory === eachFoodItem.category
+            ) {
+              return (
+                <FoodItems key={eachFoodItem._id} eachFoodItem={eachFoodItem} />
+              );
+            }
+          })
+        )}
       </div>
     </div>
   );

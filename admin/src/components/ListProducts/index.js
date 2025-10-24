@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { TailSpin } from "react-loader-spinner";
 
 import "./index.css";
-import { toast } from "react-toastify";
 
 const ListProducts = ({ apiUrl }) => {
   const [productsList, setProductsList] = useState([]);
+  const [showSpinner, setShowspinner] = useState(true);
 
   const fetchProductsList = async () => {
     const url = `${apiUrl}/added-products-list`; // api to get all item list
@@ -16,6 +18,7 @@ const ListProducts = ({ apiUrl }) => {
     const responseData = await response.json();
 
     if (response.ok) {
+      setShowspinner(false);
       setProductsList(responseData);
     } else {
       //show error toast message
@@ -54,22 +57,41 @@ const ListProducts = ({ apiUrl }) => {
           <b>Price</b>
           <b>Action</b>
         </div>
-        {productsList.map((eachProduct) => {
-          return (
-            <div key={eachProduct._id} className="list-table-format">
-              <img src={`${apiUrl}/images/` + eachProduct.image} alt="" />
-              <p>{eachProduct.name}</p>
-              <p>{eachProduct.category}</p>
-              <p>₹ {eachProduct.price}</p>
-              <p
-                onClick={() => removeFood(eachProduct._id, eachProduct.name)}
-                className="cursor"
-              >
-                X
-              </p>
-            </div>
-          );
-        })}
+        {showSpinner ? (
+          <TailSpin
+            visible={true}
+            height="50"
+            width="50"
+            color="tomato"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{
+              marginTop: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "50vh",
+            }}
+            wrapperClass=""
+          />
+        ) : (
+          productsList.map((eachProduct) => {
+            return (
+              <div key={eachProduct._id} className="list-table-format">
+                <img src={`${apiUrl}/images/` + eachProduct.image} alt="" />
+                <p>{eachProduct.name}</p>
+                <p>{eachProduct.category}</p>
+                <p>₹ {eachProduct.price}</p>
+                <p
+                  onClick={() => removeFood(eachProduct._id, eachProduct.name)}
+                  className="cursor"
+                >
+                  X
+                </p>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );
